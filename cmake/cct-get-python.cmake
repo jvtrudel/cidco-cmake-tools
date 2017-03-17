@@ -1,4 +1,24 @@
 
+# lazy decision: do not support python2
+set(python-minimum-version 3.0 CACHE STRING "Which python mimimum version is required?" )
+if(python-minimum-version VERSION_LESS 3.0)
+    message(WARNING "Python 2.x is not supported. Active python-minimum-version is upgraded to 3.0")
+    set(python-minimum-version 3.0)
+endif()
+
+
+if(NOT with-python_modules STREQUAL "" AND NOT with-pip)
+    message(WARNING "You ask for modules, but not for pip. Pip is need to import modules. It have been activated.")
+    set(with-pip TRUE)
+endif()
+
+# bug: CMAKE_MODULE_PATH do not return any path...
+if (NOT PYTHON_DIR STREQUAL "")
+    set(PYTHON_ROOT ${PYTHON_DIR} CACHE PATH "Where to search python" FORCE) # user specified a path for python source
+else()
+    set(PYTHON_ROOT ${CMAKE_MODULE_PATH} CACHE PATH "Where to search python" FORCE)  # search in cmake default path
+endif()
+mark_as_advanced(PYTHON_ROOT)
 
 # FIRST OPTION: look for a locally installed python
 if (NOT PYTHON_DIR STREQUAL "") # user directive
