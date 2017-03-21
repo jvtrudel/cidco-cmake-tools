@@ -1,4 +1,13 @@
 
+option(with-shared_python "You want to build with a shared python library?" OFF)
+option(with-pip "You need pip to fetch modules" OFF)
+set(with-python_modules "" CACHE STRING "Which python modules do you need?")
+set(PYTHON_DIRECTORY "" CACHE STRING "Where should I look for python?")
+
+
+
+
+
 # lazy decision: do not support python2
 set(python-minimum-version 3.0 CACHE STRING "Which python mimimum version is required?" )
 if(python-minimum-version VERSION_LESS 3.0)

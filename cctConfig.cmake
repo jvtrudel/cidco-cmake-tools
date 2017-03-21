@@ -20,15 +20,39 @@ CCT_MESSAGE(
     "set CCT_VERBOSE to false."
     "Happy cmaking!")
 
+if(with-user-config)
+    include(cct-get-user-config)
+endif()
+
+
 if(with-python)
     include(cct-get-python)
 endif()
 
-if(with-Qt)
+if(with-boost)
+    include(cct-get-boost)
+endif()
+
+if(with-eigen)
+    include(cct-get-eigen)
+endif()
+
+if(with-vtk)
+    include(cct-get-vtk)
+endif()
+
+if(with-pcl)
+    include(cct-get-pcl)
+endif()
+
+if(with-qt)
     include(cct-get-Qt)
 endif()
 
-
 if(with-json)
     include(cct-get-json)
+endif()
+
+if(with-spline)
+    include(cct-get-spline)
 endif()
