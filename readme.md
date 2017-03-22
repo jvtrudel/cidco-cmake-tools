@@ -1,9 +1,61 @@
 # CIDCO cmake tools
 
-A collection of cmake tools.
+A cmake package that provide an intuitive and standard convenient mechanism to retrieve, install and enable external libraries.
+
+## Design
+
+Inspired from HomeBrew.
+
+### Use semantic keywords to pass options
+
+  - with-\<lib>
+    - boost, qt, vtk, eigen, etc...
+  - binary-bitness
+    - 32 or 64 bits?
+
+### Use cmake find\<xyz> standards
+
+Use api and variable names defined by cmake's find packages and config files.
+
+### Provide standardised options to get an external library
+
+  - use installed library
+    - automatically found
+    - user selected
+  - install it
+    - from the web
+    - from local source files  
+
+# Quick Start
+
+## Installation
+
+Get a copy of that git repo e.g.
+
+    git clone git@github.com:jvtrudel/cidco-cmake-tools.git
+
+or use your preferred method.
+
+## Load it in your cmake project
+
+    find_package(CCT PATHS ${CCT_DIR} NO_DEFAULT_PATH)
+
+## Enable a package
+
+    set(with-qt ON CACHE BOOL "need QT" FORCE)
+
+This should be changed ([#1](https://github.com/jvtrudel/cidco-cmake-tools/issues/1))
+
+## Use a configuration file
+
+Instead of manually passing informations for each library, you can pass a configuration file.
+
+Set ````with-user-config```` option to true and set the path to your configuration file in ````CCT_USER_CONFIG_FILE````.
 
 
-# MIT LICENSED
+
+# LICENSE (MIT)
+
 
 Copyright 2017 © Centre Interdisciplinaire de développement en Cartographie des Océans (CIDCO)
 
