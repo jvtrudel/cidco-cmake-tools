@@ -56,3 +56,7 @@ endif()
 if(with-spline)
     include(cct-get-spline)
 endif()
+
+if(with-matlab)
+    include(cct-get-matlab)
+endif()
