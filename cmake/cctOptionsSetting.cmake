@@ -2,19 +2,19 @@
 #  (design inspired by Homebrew)
 
 
+# store required dependancies
+set(CCT_REQUIRED_DEPENDENCIES "" CACHE INTERNAL "CCT_REQUIRED_DEPENDENCIES")
+
+
 # reusable configuration file
 option(with-user-config false "You have a configuration file... Where is it?")
 set(CCT_VERBOSE true CACHE BOOL "Print CCT_MESSAGES?")
 
 
 
-
-
 # 32 or 64 bits
 set(binary_bitness 64 CACHE string "You want 32-bit or 64-bit binaries?")
 mark_as_advanced(binary_bitness)
-
-
 
 
 

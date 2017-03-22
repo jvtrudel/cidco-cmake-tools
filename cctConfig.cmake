@@ -6,10 +6,16 @@ get_filename_component(CTT_SOURCE_DIR ${CMAKE_CURRENT_LIST_FILE} DIRECTORY)
 # add CCT modules directory to CMAKE_MODULE_PATH
 list(APPEND CMAKE_MODULE_PATH ${CTT_SOURCE_DIR}/cmake)
 
+# cmake macros
+include(CMakeParseArguments)
+
 # get core variables and functionality of CCT
 include(cctOuputMacros)
 include(cctOptionsSetting)
-include(cctGetMacros)
+
+include(cctGetMacros)  # get external project using git
+include(cctSetOptionsMacro)
+include(cctInstallMacro)
 
 CCT_MESSAGE(
     "Cidco Cmake Tools (CCT) loaded."
