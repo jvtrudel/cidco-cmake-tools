@@ -16,6 +16,15 @@ function(CCT_SET_OPTIONS)
        "WITH" # multi-valued arguments
        ${ARGN} # arguments to parse
        )
-   set(CCT_REQUIRED_DEPENDENCIES ${CCT_REQUIRED_DEPENDENCIES} ${_dep_WITH} CACHE INTERNAL "CCT_REQUIRED_DEPENDENCIES")
+
+   set(_tmp ${CCT_REQUIRED_DEPENDENCIES} ${_dep_WITH} )
+   list(REMOVE_DUPLICATES _tmp)
+
+   set(CCT_REQUIRED_DEPENDENCIES "${_tmp}" CACHE INTERNAL "CCT_REQUIRED_DEPENDENCIES")
+   foreach(_dep IN LISTS CCT_REQUIRED_DEPENDENCIES)
+
+       set(with-${_dep} ON CACHE BOOL "" FORCE)
+   endforeach()
+
 
 endfunction()

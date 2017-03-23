@@ -18,6 +18,7 @@ mark_as_advanced(binary_bitness)
 
 
 
+
 # environment variables used when installing external project
 set(CCT_SOURCE_ROOT "" CACHE DIRECTORY "PATH where to put fechted sources external project")
 set(CCT_BUILD_ROOT "" CACHE DIRECTORY "PATH where to put builded external project")
@@ -28,6 +29,17 @@ mark_as_advanced(CCT_BUILD_ROOT)
 mark_as_advanced(CCT_INSTALL_ROOT)
 
 
+
+# variables for deployment
+option(with-project_metadata false "use a metdata file to describe the project")
+option(with-vendor_metadata false "use a metdata file to describe the project's vendor")
+
+
+set(CCT_METADATA_FILE ${CMAKE_CURRENT_SOURCE_DIR}/cct-project.cmake CACHE FILE "File containing project's metadata informations")
+set(CCT_VENDOR_METADATA_FILE "" CACHE FILE "File containing vendor's metadata")
+
+mark_as_advanced(CCT_METADATA_FILE)
+mark_as_advanced(CCT_VENDOR_METADATA_FILE)
 
 # Python
 option(with-python "Need python?" OFF)
@@ -68,18 +80,3 @@ endif()
 
 
 
-# report active options
-if(with-verbose)
-
-    cct_print_variable(with-verbose 1)
-    cct_print_variable(binary_bitness 1)
-
-    cct_print_variable(with-python 1)
-    cct_print_variable(with-qt 1)
-    cct_print_variable(with-boost 1)
-    cct_print_variable(with-eigen 1)
-    cct_print_variable(with-vtk 1)
-    cct_print_variable(with-pcl 1)
-
-
-endif()

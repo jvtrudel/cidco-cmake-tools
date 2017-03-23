@@ -26,10 +26,30 @@ CCT_MESSAGE(
     "set CCT_VERBOSE to false."
     "Happy cmaking!")
 
+
+# Generic method to load needed recipes
+# Do not work...
+#message("CCT_REQUIRED_DEPENDENCIES: ${CCT_REQUIRED_DEPENDENCIES}")
+#foreach(_lib IN LISTS ${CCT_REQUIRED_DEPENDENCIES})
+#    CCT_MESSAGE("${_lib} library is required" 1)
+#    include(cct-get-${${_lib}})
+#endforeach()
+
+
 if(with-user-config)
     include(cct-get-user-config)
 endif()
 
+if(with-project_metadata)
+    message("with project metadata")
+    include(cct-get-project_metadata)
+endif()
+
+
+if(with-vendor_metadata)
+    message("with vendor")
+    include(cct-get-vendor_metadata)
+endif()
 
 if(with-python)
     include(cct-get-python)
