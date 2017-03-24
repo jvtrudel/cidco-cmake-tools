@@ -35,9 +35,16 @@ CCT_MESSAGE(
 #    include(cct-get-${${_lib}})
 #endforeach()
 
+if(CCT_EXTRA_MODULE_PATHS)
+    message("set extra module path")
+   # set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${CCT_EXTRA_MODULE_PATHS}" CACHE INTERNAL "")
+    mark_as_advanced(CLEAR CCT_EXTRA_MODULE_PATHS)
+endif()
 
-if(with-user-config)
-    include(cct-get-user-config)
+
+if(with-user_config)
+    message("with user_config")
+    include(cct-get-user_config)
 endif()
 
 if(with-project_metadata)

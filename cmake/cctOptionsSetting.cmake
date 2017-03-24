@@ -7,7 +7,7 @@ set(CCT_REQUIRED_DEPENDENCIES "" CACHE INTERNAL "CCT_REQUIRED_DEPENDENCIES")
 
 
 # reusable configuration file
-option(with-user-config false "You have a configuration file... Where is it?")
+option(with-user_config false "You have a configuration file... Where is it?")
 set(CCT_VERBOSE true CACHE BOOL "Print CCT_MESSAGES?")
 
 
@@ -28,7 +28,8 @@ mark_as_advanced(CCT_SOURCE_ROOT)
 mark_as_advanced(CCT_BUILD_ROOT)
 mark_as_advanced(CCT_INSTALL_ROOT)
 
-
+set(CCT_EXTRA_MODULE_PATHS "" CACHE DIRECTORY "use extra module paths")
+mark_as_advanced(CCT_EXTRA_MODULE_PATHS)
 
 # variables for deployment
 option(with-project_metadata false "use a metdata file to describe the project")
