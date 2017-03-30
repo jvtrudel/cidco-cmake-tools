@@ -16,7 +16,7 @@ CMake convenience tools aiming to ease continuous integration of modular project
 
 The recommended way to use cidco-cmake-tools is to include it as a submodule in your project.
 
-    git clone git@github.com:jvtrudel/cidco-cmake-tools.git
+    git submodule add git@github.com:jvtrudel/cidco-cmake-tools.git
 
 Then, it is automatically available at the right version when you ship your project.
 
@@ -44,7 +44,7 @@ Then, configure the cmake variable ````CCT_DIR```` and include that line in your
 
 ## Configuration
 
-**CCT** use configuration files. At the actual development stage, it is simply a bunch of non convenient cmake scripts. But that should be replaced in a near future by yaml or json files [issue #2](https://github.com/jvtrudel/cidco-cmake-tools/issues/2).
+**CCT** use configuration files. At the actual development stage, it is simply a bunch of cmake scripts. But that should be replaced in a near future by yaml or json files (see [issue #2](https://github.com/jvtrudel/cidco-cmake-tools/issues/2)).
 
 ### Configuration files
 
