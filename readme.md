@@ -46,17 +46,54 @@ Then, configure the cmake variable ````CCT_DIR```` and include that line in your
 
 **CCT** use configuration files. At the actual development stage, it is simply a bunch of cmake scripts. But that should be replaced in a near future by yaml or json files (see [issue #2](https://github.com/jvtrudel/cidco-cmake-tools/issues/2)).
 
-### Configuration files
+In optional configuration files you can put anything (should be changed). Be careful that another configfile do not overwrite information. Loading order is:
 
-  - config-cct.cmake: (mandatory) Describe the project, project metadata. Must be in ````CMAKE_CURRENT_SOURCE_DIR````.  (````CCT_PROJECT_CONFIG_FILE````, not used yet)
-  - <machine/configuration>.cmake ``CCT_USER_CONFIG_FILE``: (optional) Describe the local machine setup including libraries.
+  1. ````CCT_PROJECT_CONFIG_FILE````
+  - ````CCT_USER_CONFIG_FILE````
+  - ````CCT_VENDOR_CONFIG_FILE````
+
+### Project
+
+  - config-cct.cmake is (mandatory)
+  - Describe the project, project metadata.
+  - Must be in ````CMAKE_CURRENT_SOURCE_DIR````.
+  - dev question:  should it be related to ````CCT_PROJECT_CONFIG_FILE````?
+
+*variables**:
+
+  - CCT_PROJECT_NAME
+  - CCT_PROJECT_VERSION
+  - CCT_PROJECT_DESCRIPTION
+
+### machine and build configuration
+
+  - <any file name>.cmake (optional)
+  ``CCT_USER_CONFIG_FILE``:  Describe the local machine setup including libraries.
   - <vendor>.cmake ````CCT_USER_CONFIG_FILE````: (optional) Vendor metadata.
+
+### Product and Vendor
+
+Informations about the released product and its owner/manager/distributor. Relevant only for packaging.
+
+  - CCT_PRODUCT_VENDOR
+  - CCT_PRODUCT_LICENCE
+  - CCT_PRODUCT_CONTACT
+  - CCT_VENDOR_LOGO
+  - CCT_VENDOR_DESCRIPTION
+  - ...
+
 
 ### CCT variables
 
+
+  - CTT_SOURCE_DIR
+  - CCT_REQUIRED_DEPENDENCIES
+
+## Options management
+
   - ````with-<lib>````: control optional use of libraries
 
-...
+
 
 
 

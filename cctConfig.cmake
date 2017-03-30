@@ -14,8 +14,11 @@ include(cctOuputMacros)
 include(cctOptionsSetting)
 
 include(cctGetMacros)  # get external project using git
+include(cctGitUtilityMacros)
 include(cctSetOptionsMacro)
 include(cctInstallMacro)
+include(cctPackMacro)
+
 
 CCT_MESSAGE(
     "Cidco Cmake Tools (CCT) loaded."

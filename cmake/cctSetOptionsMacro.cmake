@@ -1,9 +1,30 @@
+
+
+# set global cache variables
+function(CCT_STRING var val)
+    set(CCT_${var} ${val} CACHE STRING "")
+    mark_as_advanced(CCT_${var})
+endfunction()
+
+function(CCT_BOOL var val)
+    set(CCT_${var} ${val} CACHE BOOL "")
+    mark_as_advanced(CCT_${var})
+endfunction()
+
+function(CCT_DIRECTORY var val)
+    set(CCT_${var} ${val} CACHE DIRECTORY "")
+    mark_as_advanced(CCT_${var})
+endfunction()
+
+function(CCT_FILE var val)
+    set(CCT_${var} ${val} CACHE FILE "")
+    mark_as_advanced(CCT_${var})
+endfunction()
+
+
+
 #  Manage dependencies setting
-
-
-
-
-
+# set options
 function(CCT_SET_OPTIONS)
     list(LENGTH ARGN argn_len)
     if(${argn_len} EQUAL 0)
@@ -25,6 +46,4 @@ function(CCT_SET_OPTIONS)
 
        set(with-${_dep} ON CACHE BOOL "" FORCE)
    endforeach()
-
-
 endfunction()
