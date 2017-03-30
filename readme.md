@@ -1,56 +1,62 @@
 # CIDCO cmake tools
 
-A cmake package that provide an intuitive and standard convenient mechanism to retrieve, install and enable external libraries.
+CMake convenience tools aiming to ease continuous integration of modular projects.
 
-## Design
 
-Inspired from HomeBrew.
+## Requirements
 
-### Use semantic keywords to pass options
-
-  - with-\<lib>
-    - boost, qt, vtk, eigen, etc...
-  - binary-bitness
-    - 32 or 64 bits?
-
-### Use cmake find\<xyz> standards
-
-Use api and variable names defined by cmake's find packages and config files.
-
-### Provide standardised options to get an external library
-
-  - use installed library
-    - automatically found
-    - user selected
-  - install it
-    - from the web
-    - from local source files  
+  - cmake
+  - git
 
 # Quick Start
 
 ## Installation
 
-Get a copy of that git repo e.g.
+### Best way
+
+The recommended way to use cidco-cmake-tools is to include it as a submodule in your project.
 
     git clone git@github.com:jvtrudel/cidco-cmake-tools.git
 
-or use your preferred method.
+Then, it is automatically available at the right version when you ship your project.
 
-## Load it in your cmake project
+Include this line in your CMakeList.txt file:
 
+    FIND_PACKAGE(CCT PATHS ${CMAKE_CURRENT_SOURCE_DIR}/cidco-cmake-tools NO_DEFAULT_PATH)
+
+### Alternate way
+
+Get a copy of the git repo:
+
+    git clone git@github.com:jvtrudel/cidco-cmake-tools.git
+
+Then, configure the cmake variable ````CCT_DIR```` and include that line in your CMakeLists.txt file:
+
+    set(CCT_DIR "" CACHE DIRECTORY "cidco-cmake-tools directory")
+    if(NOT CCT_DIR)
+        message(FATAL_ERROR
+            "User must provide CCT_DIR (cidco-cmake-tools)\n"
+            "To instantly obtain a copy, use the git command:"
+            "   git clone git@github.com:jvtrudel/cidco-cmake-tools.git"
+            )
+    endif()
     find_package(CCT PATHS ${CCT_DIR} NO_DEFAULT_PATH)
 
-## Enable a package
+## Configuration
 
-    set(with-qt ON CACHE BOOL "need QT" FORCE)
+**CCT** use configuration files. At the actual development stage, it is simply a bunch of non convenient cmake scripts. But that should be replaced in a near future by yaml or json files [issue #2](https://github.com/jvtrudel/cidco-cmake-tools/issues/2).
 
-This should be changed ([#1](https://github.com/jvtrudel/cidco-cmake-tools/issues/1))
+### Configuration files
 
-## Use a configuration file
+  - config-cct.cmake: (mandatory) Describe the project, project metadata. Must be in ````CMAKE_CURRENT_SOURCE_DIR````.  (````CCT_PROJECT_CONFIG_FILE````, not used yet)
+  - <machine/configuration>.cmake ``CCT_USER_CONFIG_FILE``: (optional) Describe the local machine setup including libraries.
+  - <vendor>.cmake ````CCT_USER_CONFIG_FILE````: (optional) Vendor metadata.
 
-Instead of manually passing informations for each library, you can pass a configuration file.
+### CCT variables
 
-Set ````with-user-config```` option to true and set the path to your configuration file in ````CCT_USER_CONFIG_FILE````.
+  - ````with-<lib>````: control optional use of libraries
+
+...
 
 
 
@@ -64,3 +70,33 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+
+# Design Principles
+
+Inspired from HomeBrew.
+
+## Use semantic keywords to pass options
+
+  - with-\<lib>
+    - boost, qt, vtk, eigen, etc...
+  - binary-bitness
+    - 32 or 64 bits?
+
+## Use configuration files
+
+
+
+## Use CMake  *standards* and best practices
+
+  - Use api and variable names defined by cmake's find packages and config files.
+
+## Provide standardised options to get an external library
+
+  - use installed library
+    - automatically found
+    - user selected
+  - install it
+    - from the web
+    - from local source files  
