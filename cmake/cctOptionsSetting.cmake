@@ -6,6 +6,9 @@
 set(CCT_REQUIRED_DEPENDENCIES "" CACHE INTERNAL "CCT_REQUIRED_DEPENDENCIES")
 
 
+# recipies directories
+set(CCT_RECIPES_DIR "" CACHE INTERNAL "CCT_RECIPES_DIR")
+
 # reusable configuration file
 option(with-user_config false "You have a configuration file... Where is it?")
 set(CCT_VERBOSE true CACHE BOOL "Print CCT_MESSAGES?")

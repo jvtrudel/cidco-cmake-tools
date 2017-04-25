@@ -1,10 +1,12 @@
 
 
-get_filename_component(CTT_SOURCE_DIR ${CMAKE_CURRENT_LIST_FILE} DIRECTORY)
+get_filename_component(CCT_SOURCE_DIR ${CMAKE_CURRENT_LIST_FILE} DIRECTORY)
 
+
+set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${CCT_SOURCE_DIR}/cmake" CACHE INTERNAL "")
 
 # add CCT modules directory to CMAKE_MODULE_PATH
-list(APPEND CMAKE_MODULE_PATH ${CTT_SOURCE_DIR}/cmake)
+#list(APPEND CMAKE_MODULE_PATH ${CCT_SOURCE_DIR}/cmake)
 
 # cmake macros
 include(CMakeParseArguments)
@@ -15,10 +17,12 @@ include(cctOptionsSetting)
 
 include(cctGetMacros)  # get external project using git
 include(cctGitUtilityMacros)
+include(cct-add-recipies-source)
 include(cctSetOptionsMacro)
 include(cctInstallMacro)
 include(cctPackMacro)
 
+CCT_ADD_RECIPIES_SOURCE(${CCT_SOURCE_DIR}/cmake)
 
 CCT_MESSAGE(
     "Cidco Cmake Tools (CCT) loaded."
@@ -37,7 +41,7 @@ CCT_MESSAGE(
 #    CCT_MESSAGE("${_lib} library is required" 1)
 #    include(cct-get-${${_lib}})
 #endforeach()
-
+if(false)
 if(CCT_EXTRA_MODULE_PATHS)
     message("set extra module path")
    # set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${CCT_EXTRA_MODULE_PATHS}" CACHE INTERNAL "")
@@ -95,4 +99,5 @@ endif()
 
 if(with-matlab)
     include(cct-get-matlab)
+endif()
 endif()

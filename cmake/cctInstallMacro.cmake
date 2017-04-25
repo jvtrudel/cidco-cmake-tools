@@ -16,7 +16,11 @@ macro(CCT_INSTALL)
         )
 
     foreach(_dep IN LISTS CCT_REQUIRED_DEPENDENCIES)
-        include(${CTT_SOURCE_DIR}/cmake/cct-install-${_dep}.cmake)
+        foreach(_dir IN LISTS CCT_RECIPES_DIR)
+            if(EXISTS ${_dir}/cct-install-${_dep}.cmake)
+              include(${_dir}/cct-install-${_dep}.cmake)
+          endif()
+        endforeach()
     endforeach()
 
 

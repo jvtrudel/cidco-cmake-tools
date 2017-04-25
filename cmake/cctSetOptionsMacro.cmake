@@ -1,5 +1,3 @@
-
-
 # set global cache variables
 function(CCT_STRING var val)
     set(CCT_${var} ${val} CACHE STRING "")
@@ -22,7 +20,6 @@ function(CCT_FILE var val)
 endfunction()
 
 
-
 #  Manage dependencies setting
 # set options
 function(CCT_SET_OPTIONS)
@@ -43,7 +40,14 @@ function(CCT_SET_OPTIONS)
 
    set(CCT_REQUIRED_DEPENDENCIES "${_tmp}" CACHE INTERNAL "CCT_REQUIRED_DEPENDENCIES")
    foreach(_dep IN LISTS CCT_REQUIRED_DEPENDENCIES)
-
        set(with-${_dep} ON CACHE BOOL "" FORCE)
+     #  message(FATAL_ERROR "CCT_RECIPES_DIR ${CCT_RECIPES_DIR}")
+       foreach(_dir IN LISTS CCT_RECIPES_DIR)
+      #     message(FATAL_ERROR "wtf?! ${_dir}/cct-install-${_dep}.cmake")
+           if(EXISTS ${_dir}/cct-install-${_dep}.cmake)
+           #    message(FATAL_ERROR "wtf?! ${_dir}/cct-install-${_dep}.cmake")
+             include(${_dir}/cct-get-${_dep}.cmake)
+         endif()
+       endforeach()
    endforeach()
 endfunction()
