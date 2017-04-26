@@ -8,3 +8,4 @@
     FIND_PACKAGE(Qt5 COMPONENTS Core Widgets REQUIRED)
 
 # option 2: use user defined version
+

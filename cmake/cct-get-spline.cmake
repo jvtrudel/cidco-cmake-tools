@@ -3,7 +3,7 @@
  # option 1: user defined directory
  if(EXISTS ${SPLINE_DIR}/spline.h)
    set(SPLINE_FOUND TRUE)
-    set(SPLINE_INCLUDE_DIR ${SPLINE_DIR})
+    set(SPLINE_INCLUDE_DIR ${SPLINE_DIR} CACHE INTERNAL "")
  endif()
 
 # option 2: download

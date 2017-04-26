@@ -1,0 +1,6 @@
+if (NOT EXISTS ${YAML-CPP_ROOT})
+    message(FATAL_ERROR "A valid yaml-cpp library is mandatory")
+endif()
+find_package(yaml-cpp PATHS ${YAML-CPP_ROOT})
+set(YAML_CPP_INCLUDE_DIR ${YAML_CPP_INCLUDE_DIR} CACHE INTENAL "")
+set(YAML_CPP_LIBRARIES ${YAML_CPP_LIBRARIES} CACHE INTENAL "")
