@@ -15,6 +15,8 @@ include(CMakeParseArguments)
 include(cctOuputMacros)
 include(cctOptionsSetting)
 
+include(cct-add-prefix)  # mets un  préfixe devant une liste de fichiers
+include(cct-get-libraries)
 include(cctGetMacros)  # get external project using git
 include(cctGitUtilityMacros)
 include(cct-add-recipies-source)
@@ -24,6 +26,7 @@ include(cctPackMacro)
 
 CCT_ADD_RECIPIES_SOURCE(${CCT_SOURCE_DIR}/cmake)
 
+if(false)
 CCT_MESSAGE(
     "Cidco Cmake Tools (CCT) loaded."
     "For more details on CCT usage and options,"
@@ -32,7 +35,7 @@ CCT_MESSAGE(
     "Default message is on. If you don't need it,"
     "set CCT_VERBOSE to false."
     "Happy cmaking!")
-
+endif()
 
 # Generic method to load needed recipes
 # Do not work...
