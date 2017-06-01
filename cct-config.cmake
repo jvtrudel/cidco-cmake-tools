@@ -1,30 +1,59 @@
 
-
+# add CCT files to CMAKE_MODULE_PATH
 get_filename_component(CCT_SOURCE_DIR ${CMAKE_CURRENT_LIST_FILE} DIRECTORY)
-
-
 set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${CCT_SOURCE_DIR}/cmake" CACHE INTERNAL "")
 
-# add CCT modules directory to CMAKE_MODULE_PATH
-#list(APPEND CMAKE_MODULE_PATH ${CCT_SOURCE_DIR}/cmake)
 
-# cmake macros
+# get build-in cmake macros
 include(CMakeParseArguments)
 
-# get core variables and functionality of CCT
-include(cctOuputMacros)
-include(cctOptionsSetting)
+# CCT CORE COMMANDS
+include(core/cctOuputMacros)
+include(core/cct-add-prefix)
+include(core/cctCheckMacros)
+include(core/cctGitUtilityMacros)
+include(core/cctCoreVariables)
 
-include(cct-add-prefix)  # mets un  préfixe devant une liste de fichiers
-include(cct-get-libraries)
-include(cctGetMacros)  # get external project using git
-include(cctGitUtilityMacros)
-include(cct-add-recipies-source)
-include(cctSetOptionsMacro)
-include(cctInstallMacro)
-include(cctPackMacro)
+# options: CCT COMMANDS to manage options
+include(options/cctOptionsVariables)
+include(options/cctOptionsFunctions)
 
-CCT_ADD_RECIPIES_SOURCE(${CCT_SOURCE_DIR}/cmake)
+
+# dependencies: CCT COMMAND to manage dependencies
+
+
+
+# external: CCT COMMANDS FOR EXTERNAL PROJECT MANAGEMENT
+#include(external/cctGetMacros)  # get external project using git
+
+
+
+# get: CCT COMMANDS to select libraries
+
+
+
+# install: CCT COMMANDS to install library/application
+include(install/cctInstallMacro)
+
+# package: CCT COMMAND to package library/application
+include(package/cctPackMacro)
+
+
+  # mets un  préfixe devant une liste de fichiers
+# libraries: CCT COMMANDS to manage dependents libraries
+
+
+
+# recipies: CCT RECIPES for dependendies
+
+
+
+
+
+
+
+
+#CCT_ADD_RECIPIES_SOURCE(${CCT_SOURCE_DIR}/cmake)
 
 if(false)
 CCT_MESSAGE(

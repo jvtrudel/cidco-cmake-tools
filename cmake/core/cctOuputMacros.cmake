@@ -5,17 +5,17 @@
 macro(CCT_MESSAGE)
    if(CCT_VERBOSE)
       foreach( _elem ${ARGN})
-        message("  -CCT-  ${_elem}")
+        message("CCT >  ${_elem}")
       endforeach()
    endif()
 endmacro()
 
 macro(CCT_FATAL_ERROR)
-      message("  -CCT-  FATAL ERROR!")
+      message("CCT >  FATAL ERROR!")
       foreach( _elem ${ARGN})
-        message("  -CCT-  ${_elem}")
+        message("CCT >  ${_elem}")
       endforeach()
-      message(FATAL_ERROR "  -CCT-  FATAL ERROR!")
+      message(FATAL_ERROR "CCT >  FATAL ERROR!")
 endmacro()
 
 
