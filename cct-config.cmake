@@ -19,12 +19,12 @@ include(options/cctOptionsVariables)
 include(options/cctOptionsFunctions)
 
 
-# dependencies: CCT COMMAND to manage dependencies
+# submodule: CCT COMMAND and tools to manage submodule dependencies
 
+include(submodules/cctRequiredSubmodules)
 
-
-# external: CCT COMMANDS FOR EXTERNAL PROJECT MANAGEMENT
-#include(external/cctGetMacros)  # get external project using git
+# libraries: CCT COMMANDS FOR EXTERNAL libraries management
+# typiquement via find package
 
 
 

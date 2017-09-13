@@ -2,8 +2,11 @@
 #  (design inspired by Homebrew)
 
 
-# store required dependancies
-set(CCT_REQUIRED_DEPENDENCIES "" CACHE INTERNAL "CCT_REQUIRED_DEPENDENCIES")
+# liste des submodules requis
+set(CCT_SUBMODULES_LIST "" CACHE INTERNAL "CCT:: liste des submodules requis")
+
+
+
 
 # store required options
 set(CCT_REQUIRED_OPTIONS "" CACHE INTERNAL "CCT_REQUIRED_OPTIONS")
@@ -11,6 +14,7 @@ set(CCT_REQUIRED_OPTIONS "" CACHE INTERNAL "CCT_REQUIRED_OPTIONS")
 set(CCT_CONFIG_DIR ${CMAKE_CURRENT_SOURCE_DIR}/cct-config CACHE INTERNAL "CCT user defined configuration directory")
 
 set(CCT_AVAILABLE_OPTIONS "project;vendor;machine" CACHE INTERNAL "CCT_AVAILABLE_OPTIONS")
+
 
 
 # OBSOLETE STUFF ...
